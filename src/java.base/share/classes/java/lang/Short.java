@@ -609,6 +609,66 @@ public final class Short extends Number implements Comparable<Short>, Constable 
         return ((long) x) & 0xffffL;
     }
 
+     /**
+     * Returns the value obtained by rotating the two's complement binary
+     * representation of the specified {@code short} value left by the
+     * specified number of bits.  (Bits shifted out of the left hand, or
+     * high-order, side reenter on the right, or low-order.)
+     *
+     * <p>Note that left rotation with a negative distance is equivalent to
+     * right rotation: {@code rotateLeft(val, -distance) == rotateRight(val,
+     * distance)}.  Note also that rotation by any multiple of 16 is a
+     * no-op, so all but the last four bits of the rotation distance can be
+     * ignored, even if the distance is negative: {@code rotateLeft(val,
+     * distance) == rotateLeft(val, distance & 0xF)}.
+     *
+     * @param i the value whose bits are to be rotated left
+     * @param distance the number of bit positions to rotate left
+     * @return the value obtained by rotating the two's complement binary
+     *     representation of the specified {@code short} value left by the
+     *     specified number of bits.
+     * @since EXT
+     */
+    public static short rotateLeft(short i, int distance) {
+        int maskDist = distance & 0xF;
+        if (maskDist == 0) {
+          return i; // nothing to do...
+        } else {
+          int v = i & 0xFFFF;
+          return (short)((v << maskDist) | (v >>> (16-maskDist)));
+        }
+    }
+
+    /**
+     * Returns the value obtained by rotating the two's complement binary
+     * representation of the specified {@code short} value right by the
+     * specified number of bits.  (Bits shifted out of the right hand, or
+     * low-order, side reenter on the left, or high-order.)
+     *
+     * <p>Note that right rotation with a negative distance is equivalent to
+     * left rotation: {@code rotateRight(val, -distance) == rotateLeft(val,
+     * distance)}.  Note also that rotation by any multiple of 16 is a
+     * no-op, so all but the last four bits of the rotation distance can be
+     * ignored, even if the distance is negative: {@code rotateRight(val,
+     * distance) == rotateRight(val, distance & 0xF)}.
+     *
+     * @param i the value whose bits are to be rotated right
+     * @param distance the number of bit positions to rotate right
+     * @return the value obtained by rotating the two's complement binary
+     *     representation of the specified {@code short} value right by the
+     *     specified number of bits.
+     * @since EXT
+     */
+    public static short rotateRight(short i, int distance) {
+        int maskDist = distance & 0xF;
+        if (maskDist == 0) {
+          return i; // nothing to do...
+        } else {
+          int v = i & 0xFFFF;
+          return (short)((v >>> maskDist) | (v << (16-maskDist)));
+        }
+    }
+
     /** use serialVersionUID from JDK 1.1. for interoperability */
     @java.io.Serial
     private static final long serialVersionUID = 7515723908773894738L;

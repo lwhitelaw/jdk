@@ -591,6 +591,66 @@ public final class Byte extends Number implements Comparable<Byte>, Constable {
      */
     public static final int BYTES = SIZE / Byte.SIZE;
 
+     /**
+     * Returns the value obtained by rotating the two's complement binary
+     * representation of the specified {@code byte} value left by the
+     * specified number of bits.  (Bits shifted out of the left hand, or
+     * high-order, side reenter on the right, or low-order.)
+     *
+     * <p>Note that left rotation with a negative distance is equivalent to
+     * right rotation: {@code rotateLeft(val, -distance) == rotateRight(val,
+     * distance)}.  Note also that rotation by any multiple of 8 is a
+     * no-op, so all but the last three bits of the rotation distance can be
+     * ignored, even if the distance is negative: {@code rotateLeft(val,
+     * distance) == rotateLeft(val, distance & 0x7)}.
+     *
+     * @param i the value whose bits are to be rotated left
+     * @param distance the number of bit positions to rotate left
+     * @return the value obtained by rotating the two's complement binary
+     *     representation of the specified {@code byte} value left by the
+     *     specified number of bits.
+     * @since EXT
+     */
+    public static byte rotateLeft(byte i, int distance) {
+        int maskDist = distance & 0x7;
+        if (maskDist == 0) {
+          return i; // nothing to do...
+        } else {
+          int v = i & 0xFF;
+          return (byte)((v << maskDist) | (v >>> (8-maskDist)));
+        }
+    }
+
+    /**
+     * Returns the value obtained by rotating the two's complement binary
+     * representation of the specified {@code byte} value right by the
+     * specified number of bits.  (Bits shifted out of the right hand, or
+     * low-order, side reenter on the left, or high-order.)
+     *
+     * <p>Note that right rotation with a negative distance is equivalent to
+     * left rotation: {@code rotateRight(val, -distance) == rotateLeft(val,
+     * distance)}.  Note also that rotation by any multiple of 8 is a
+     * no-op, so all but the last three bits of the rotation distance can be
+     * ignored, even if the distance is negative: {@code rotateRight(val,
+     * distance) == rotateRight(val, distance & 0x7)}.
+     *
+     * @param i the value whose bits are to be rotated right
+     * @param distance the number of bit positions to rotate right
+     * @return the value obtained by rotating the two's complement binary
+     *     representation of the specified {@code byte} value right by the
+     *     specified number of bits.
+     * @since EXT
+     */
+    public static byte rotateRight(byte i, int distance) {
+        int maskDist = distance & 0x7;
+        if (maskDist == 0) {
+          return i; // nothing to do...
+        } else {
+          int v = i & 0xFF;
+          return (byte)((v >>> maskDist) | (v << (8-maskDist)));
+        }
+    }
+
     /** use serialVersionUID from JDK 1.1. for interoperability */
     @java.io.Serial
     private static final long serialVersionUID = -7183698231559129828L;
