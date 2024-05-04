@@ -423,6 +423,7 @@ HeapWord* SerialHeap::attempt_allocation(size_t size,
 
 HeapWord* SerialHeap::mem_allocate(size_t size,
                                    bool* gc_overhead_limit_was_exceeded) {
+  log_info(gc)("Called a serial allocation for %u bytes",size);
   return mem_allocate_work(size,
                            false /* is_tlab */);
 }
@@ -930,6 +931,7 @@ size_t SerialHeap::unsafe_max_tlab_alloc(Thread* thr) const {
 HeapWord* SerialHeap::allocate_new_tlab(size_t min_size,
                                         size_t requested_size,
                                         size_t* actual_size) {
+  log_info(gc)("Called a serial tlab allocation for min %u bytes, req %u",min_size,requested_size);
   HeapWord* result = mem_allocate_work(requested_size /* size */,
                                        true /* is_tlab */);
   if (result != nullptr) {
