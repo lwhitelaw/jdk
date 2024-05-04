@@ -485,6 +485,14 @@ address TemplateInterpreterGenerator::generate_intrinsic_entry(AbstractInterpret
                                            : entry_point = generate_Float_float16ToFloat_entry(); break;
   case Interpreter::java_lang_Float_floatToFloat16
                                            : entry_point = generate_Float_floatToFloat16_entry(); break;
+  case Interpreter::java_lang_Byte_rotateLeft
+                                           : entry_point = generate_Byte_rotateLeft(); break;
+  case Interpreter::java_lang_Byte_rotateRight
+                                           : entry_point = generate_Byte_rotateRight(); break;
+  case Interpreter::java_lang_Short_rotateLeft
+                                           : entry_point = generate_Short_rotateLeft(); break;
+  case Interpreter::java_lang_Short_rotateRight
+                                           : entry_point = generate_Short_rotateRight(); break;
 
   // On x86_32 platforms, a special entry is generated for the following four methods.
   // On other platforms the native entry is used to enter these methods.

@@ -105,6 +105,11 @@ class TemplateInterpreterGenerator: public AbstractInterpreterGenerator {
   address generate_Float_float16ToFloat_entry();
   address generate_Float_floatToFloat16_entry();
 
+  address generate_Byte_rotateLeft();
+  address generate_Byte_rotateRight();
+  address generate_Short_rotateLeft();
+  address generate_Short_rotateRight();
+
   // Some platforms don't need registers, other need two. Unused function is
   // left unimplemented.
   void generate_stack_overflow_check(void);

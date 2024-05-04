@@ -155,6 +155,10 @@ AbstractInterpreter::MethodKind AbstractInterpreter::method_kind(const methodHan
           return zerolocals;
         }
         break;
+      case vmIntrinsics::_rotateLeft_b:      return java_lang_Byte_rotateLeft;
+      case vmIntrinsics::_rotateRight_b:     return java_lang_Byte_rotateRight;
+      case vmIntrinsics::_rotateLeft_s:      return java_lang_Short_rotateLeft;
+      case vmIntrinsics::_rotateRight_s:     return java_lang_Short_rotateRight;
       default: break;
     }
   }

@@ -495,6 +495,27 @@ address TemplateInterpreterGenerator::generate_currentThread() {
   return entry_point;
 }
 
+// Rotates
+address TemplateInterpreterGenerator::generate_Byte_rotateLeft() {
+  address entry_point = __ pc();
+  return entry_point; // it'll probably crash but it'll work
+}
+
+address TemplateInterpreterGenerator::generate_Byte_rotateRight() {
+  address entry_point = __ pc();
+  return entry_point; // it'll probably crash but it'll work
+}
+
+address TemplateInterpreterGenerator::generate_Short_rotateLeft() {
+  address entry_point = __ pc();
+  return entry_point; // it'll probably crash but it'll work
+}
+
+address TemplateInterpreterGenerator::generate_Short_rotateRight() {
+  address entry_point = __ pc();
+  return entry_point; // it'll probably crash but it'll work
+}
+
 // Not supported
 address TemplateInterpreterGenerator::generate_Float_intBitsToFloat_entry() { return nullptr; }
 address TemplateInterpreterGenerator::generate_Float_floatToRawIntBits_entry() { return nullptr; }

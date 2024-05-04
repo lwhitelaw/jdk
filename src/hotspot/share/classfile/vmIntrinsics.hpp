@@ -129,6 +129,10 @@ class methodHandle;
   do_signature(long2_int_signature,       "(JJ)I")                                                                      \
   do_signature(long2_long_signature,      "(JJ)J")                                                                      \
                                                                                                                         \
+  /* Rotate intrinsics */                                                                                               \
+  do_signature(byte_int_byte_signature,  "(BI)B")                                                                       \
+  do_signature(short_int_short_signature,  "(SI)S")                                                                     \
+                                                                                                                        \
   /* here are the math names, all together: */                                                                          \
   do_name(abs_name,"abs")       do_name(sin_name,"sin")         do_name(cos_name,"cos")                                 \
   do_name(tan_name,"tan")       do_name(atan2_name,"atan2")     do_name(sqrt_name,"sqrt")                               \
@@ -266,6 +270,13 @@ class methodHandle;
     /*  (symbol reverseBytes_name defined above) */                                                                     \
   do_intrinsic(_reverseBytes_s,           java_lang_Short,        reverseBytes_name,        short_short_signature, F_S) \
     /*  (symbol reverseBytes_name defined above) */                                                                     \
+                                                                                                                        \
+  do_intrinsic(_rotateLeft_b,             java_lang_Byte,         rotateLeft_name,        byte_int_byte_signature, F_S) \
+  do_intrinsic(_rotateRight_b,            java_lang_Byte,         rotateRight_name,       byte_int_byte_signature, F_S) \
+  do_intrinsic(_rotateLeft_s,             java_lang_Short,        rotateLeft_name,      short_int_short_signature, F_S) \
+  do_intrinsic(_rotateRight_s,            java_lang_Short,        rotateRight_name,     short_int_short_signature, F_S) \
+    do_name(    rotateLeft_name,                                 "rotateLeft")                                          \
+    do_name(    rotateRight_name,                                "rotateRight")                                         \
                                                                                                                         \
   do_intrinsic(_identityHashCode,         java_lang_System,       identityHashCode_name, object_int_signature,   F_SN)  \
    do_name(     identityHashCode_name,                           "identityHashCode")                                    \
