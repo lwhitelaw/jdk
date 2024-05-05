@@ -629,6 +629,7 @@ public final class Short extends Number implements Comparable<Short>, Constable 
      *     specified number of bits.
      * @since EXT
      */
+    @IntrinsicCandidate
     public static short rotateLeft(short i, int distance) {
         int maskDist = distance & 0xF;
         if (maskDist == 0) {
@@ -659,6 +660,7 @@ public final class Short extends Number implements Comparable<Short>, Constable 
      *     specified number of bits.
      * @since EXT
      */
+    @IntrinsicCandidate
     public static short rotateRight(short i, int distance) {
         int maskDist = distance & 0xF;
         if (maskDist == 0) {

@@ -611,6 +611,7 @@ public final class Byte extends Number implements Comparable<Byte>, Constable {
      *     specified number of bits.
      * @since EXT
      */
+    @IntrinsicCandidate
     public static byte rotateLeft(byte i, int distance) {
         int maskDist = distance & 0x7;
         if (maskDist == 0) {
@@ -641,6 +642,7 @@ public final class Byte extends Number implements Comparable<Byte>, Constable {
      *     specified number of bits.
      * @since EXT
      */
+    @IntrinsicCandidate
     public static byte rotateRight(byte i, int distance) {
         int maskDist = distance & 0x7;
         if (maskDist == 0) {
